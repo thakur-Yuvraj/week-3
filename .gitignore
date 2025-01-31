@@ -1,3 +1,4 @@
 *.class
 temp.txt
 *.iml
+*.xml
