@@ -1,0 +1,17 @@
+Let say I have a text file that I want to read into my java program using these classes:
+
+I use FileReader and BufferedReader
+
+FileReader fileReader = new FileReader(new File("text.txt)"); // probably correct???
+BufferedReader bufferedReader = new BufferedReader(fileReader);
+1) What is the task of the FileReader object here? Is it responsible to make an I/O-request via the OS to the file, and thereafter read bytes? What is the cost with this? Is it true that the FileReader makes several I/O-requests? Or is the cost when the FileReader object has to converting bytes to characters, character by character?
+
+2) The task of the BufferedReader-object - to refer to the last sentence above. - Is the role for the BufferedReader-object to simply buffer arrays of incoming bytes and THEN convert those to character?
+
+Very grateful for answers
+
+Edit: first of all thanks for incoming answers. But I should have mentioned that its exactly this documentation I have studied. Call me stupid or something - but what is meant by "each read request". WHEN is each read request made? how often?
+
+In general, each read request made of a Reader causes a corresponding read request to be made of the underlying character or byte stream. It is therefore advisable to wrap a BufferedReader around any Reader whose read() operations may be costly, such as FileReaders and InputStreamReaders. For example,
+
+This is mostly why a launched this question - It sounds that the FileReader causes a lot of I/O-request which slows everything down.
